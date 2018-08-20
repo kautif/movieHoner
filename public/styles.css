@@ -50,3 +50,28 @@ body {
 .signup-flex input {
 	margin-bottom: 20px;
 }
+
+.question {
+	text-align: center;
+	background-color: lightgrey;
+}
+
+.question h2 {
+	margin: 0px;
+}
+
+.question form {
+	display: flex;
+	flex-direction: column;
+	width: 25%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.question select {
+	text-align-last: center;
+}
+
+.question input {
+	margin-bottom: 20px;
+}
