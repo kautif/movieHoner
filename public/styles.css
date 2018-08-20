@@ -1,0 +1,52 @@
+body {
+	margin: 0px;
+}
+
+.intro,
+.purpose,
+.problem,
+.solution {
+	text-align: center;	
+}
+
+.purpose header,
+.problem header,
+.solution header {
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.purpose,
+.solution {
+	width: 100%;
+	background-color: grey;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+.problem {
+	width: 100%;
+	background-color: lightgrey;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.register h3, 
+.register h4 {
+	text-align: center;
+}
+
+.signup-flex {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	align-content: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.signup-flex input {
+	margin-bottom: 20px;
+}
