@@ -23,7 +23,7 @@ router.put('/movies', (req, res) => {
       return res.sendStatus(500);
     }
 
-    res.sendStatus(200);
+    res.send(d);
     console.log(d);
   });
 

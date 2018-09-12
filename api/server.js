@@ -120,6 +120,10 @@ function closeServer() {
 // Add routes for PUT movies
   // Calling API for searching
 
+app.get('/search', function(req, res) => {
+  // Every result I see doesn't have a search route per se. 
+    // Just a function.
+});
 
 // Add movie to list
 
