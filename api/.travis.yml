@@ -1,0 +1,12 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+services: 
+  - mongodb
+deploy:
+  provider: heroku
+  app: movie-honer-api
+env:
+  - CI=true

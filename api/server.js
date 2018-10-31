@@ -1,9 +1,9 @@
+require("dotenv").config();
 const bodyParser = require("body-parser");
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
 const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 
@@ -61,7 +61,10 @@ app.get("/search", async function(req, res) {
     maxRating = 4;
     minRating = 0;
   }
-  let apiKey = "08eba60ea81f9e9cf342c7fa3df07bb6";
+
+  // create new api key.
+  // .env file can be created manually. But, handled by dotenv package.
+  let apiKey = process.env.MOVIEDB_API_KEY;
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&year=${year}&with_genres=${genre}&vote_average.lte=${maxRating}&vote_average.gte=${minRating}`
