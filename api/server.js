@@ -8,7 +8,6 @@ const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 
 const passportSetup = require("./login/passport-setup");
-// const session = require('express-session');
 const session = require("cookie-session");
 const passport = require("passport");
 const User = require("./models/user");
@@ -18,15 +17,9 @@ const fetch = require("node-fetch");
 mongoose.Promise = global.Promise;
 
 const app = express();
-
-// app.use(cookieSession({
-// 	maxAge: 24 * 60 * 60 * 1000,
-// 	keys: ['keys.session.cookieKey']
-// }));
 app.options("*", cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
-// Should generally be in an .env file before pushing
 app.use(session({ secret: "mysecret", maxAge: 24 * 60 * 60 * 1000 }));
 
 app.use(
@@ -42,11 +35,7 @@ app.use(passport.session());
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 
-// Create endpoint for retrieving genres
-// OR: Hard code genres that will be used inside client.
-// Only client should show genre names.
-// Not including genre property on results that get sent back
-
+// Rating filter
 app.get("/search", async function(req, res) {
   const { genre, year, quality } = req.query;
   let maxRating;
@@ -62,8 +51,7 @@ app.get("/search", async function(req, res) {
     minRating = 0;
   }
 
-  // create new api key.
-  // .env file can be created manually. But, handled by dotenv package.
+  // GET movies
   let apiKey = process.env.MOVIEDB_API_KEY;
   try {
     const response = await fetch(
@@ -104,10 +92,6 @@ app.get("/search", async function(req, res) {
   }
 });
 
-// 9/22/18
-// Update api module to send image to server when adding a movie
-// Update server to add image to document (i.e. movie that is being added)
-
 const { PORT, DATABASE_URL } = require("./config");
 
 let server;
@@ -146,12 +130,6 @@ function closeServer() {
     });
   });
 }
-
-// Need to setup routes
-// Add routes for PUT movies
-// Calling API for searching
-
-// Add movie to list
 
 if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));

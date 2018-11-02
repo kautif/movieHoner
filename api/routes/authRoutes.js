@@ -29,7 +29,6 @@ router.post("/signup", function(req, res, next) {
       return res.sendStatus(500);
     }
 
-    // 10/5/18: Attempt at sending error code for taken email address
     if (user) {
       return req.login(user, function() {
         res.send(serializeUser(user));
@@ -76,7 +75,7 @@ router.post("/login", function(req, res, next) {
 });
 
 router.get("/user", function(req, res) {
-  console.log('get/user');
+  console.log("get/user");
   if (req.user) {
     const user = req.user;
     return res.send(serializeUser(user));
@@ -91,8 +90,3 @@ router.get("/logout", function(req, res) {
 });
 
 module.exports = router;
-
-// Add add'l route
-// GET /user
-// If authenticated, send user
-// If not authenticated, send 401

@@ -2,9 +2,6 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-// 9/20/18
-// save img url in movieSchema
-
 const MovieSchema = new Schema({
   title: String,
   genre: String,

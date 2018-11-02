@@ -64,7 +64,6 @@ describe("Movie Repository", function() {
         .get("/search")
         .then(function(res) {
           expect(res).to.have.status(200);
-          // res.should.be.json;
         });
     });
   });
@@ -213,17 +212,9 @@ describe("Movie Repository", function() {
           expect(JSON.parse(res.text)).to.deep.equal({
             message: "That email is already taken."
           });
-          // 10/5/18: Status message failing
           expect(res).to.have.status(409);
         });
     });
-
-    // 10/3/18
-    // More Tests
-    // Sign up
-    // -- with empty username [X]
-    // -- Email already in use [X]
-    // -- -- Status of 409. (conflict error message)
 
     it("Should reject short passwords", function() {
       var agent = chai.request.agent(app);
@@ -240,17 +231,6 @@ describe("Movie Repository", function() {
         });
     });
   });
-
-  // 10/3/18
-  // If username missing, send 400 status [X]
-  // If password missing, send 400 status [X]
-  // If username not string, send 400 status [X]
-  // If password not string, send 400 status [X]
-  // If username and password not valid for existing user, then 401 [X]
-  // If username and password are valid for existing user, then 200 [X]
-  // -- Verify that object has id (string), email, movies (in the model)
-  // ^^ Expecting JSON for all cases
-  // For error, object with appropriate value for the message property
 
   describe("POST /login", function() {
     it("Should reject empty username field", function() {

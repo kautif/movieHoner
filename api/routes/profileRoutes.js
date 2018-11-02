@@ -30,8 +30,6 @@ router.put("/movies", (req, res) => {
   });
 });
 
-// GET user's movie list
-
 router.get("/movies", function(req, res) {
   let user = req.user;
 
